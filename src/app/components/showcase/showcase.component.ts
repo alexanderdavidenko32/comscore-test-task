@@ -1,31 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 import {Product} from '../../interface/product.interface';
 import {ProductService} from '../../services/product/product.service';
 import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
+import {untilDestroyed} from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-showcase',
   templateUrl: './showcase.component.html',
   styleUrls: ['./showcase.component.scss']
 })
-export class ShowcaseComponent implements OnInit {
+export class ShowcaseComponent implements OnInit, OnDestroy {
 
   products: Product[];
 
   constructor(private productService: ProductService,
               private shoppingCartService: ShoppingCartService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.productService.getProducts()
-      //TODO
-      // .pipe(
-      //   untilDestroyed(this)
-      // )
+      .pipe(untilDestroyed(this))
       .subscribe((products) => {
         this.products = products;
       });
   }
+
+  public ngOnDestroy(): void {}
 
   public onAddProductClick(event: Event, id: number): void {
     event.preventDefault();
