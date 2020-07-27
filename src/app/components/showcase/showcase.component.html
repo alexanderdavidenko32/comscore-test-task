@@ -1,4 +1,4 @@
 <p>showcase works!</p>
 <ul>
-  <li *ngFor="let product of products">{{ product.title }}: {{product.price}}</li>
+  <li *ngFor="let product of products">{{ product.title }}: {{product.currencySign}}{{product.price}} <a href="#" (click)="onAddProductClick($event, product.id)">add</a></li>
 </ul>
