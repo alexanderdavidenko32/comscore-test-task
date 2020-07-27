@@ -64,6 +64,17 @@ export class ShoppingCartService {
     this.products.next(newProducts);
   }
 
+  getTotal(): number {
+    const products = this.products.getValue();
+    let total = 0;
+
+    products.forEach((product: ShoppingCartProduct) => {
+      total += product.total;
+    });
+
+    return total;
+  }
+
   getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products;
   }

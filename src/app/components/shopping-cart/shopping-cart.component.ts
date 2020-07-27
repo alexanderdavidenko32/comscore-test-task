@@ -11,6 +11,7 @@ import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.se
 export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   public products: ShoppingCartProduct[];
+  public total = 0;
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
@@ -19,6 +20,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       .pipe(untilDestroyed(this))
       .subscribe((products) => {
         this.products = products;
+
+        this.total = this.shoppingCartService.getTotal();
       });
   }
 
