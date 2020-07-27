@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import {Product} from '../../interface/product.interface';
 import {ShoppingCartProduct} from '../../interface/shopping-cart-product';
 import {ProductService} from '../product/product.service';
 
@@ -29,9 +28,9 @@ export class ShoppingCartService {
         return item.id !== product.id;
       }) || [];
 
-      newProducts = [...theRestProducts, {...foundProduct, quantity: foundProduct.quantity + 1}];
+      newProducts = [...theRestProducts, {...foundProduct, total: 0, quantity: foundProduct.quantity + 1}];
     } else {
-      newProducts = [...products, {...product, quantity: 1}];
+      newProducts = [...products, {...product, quantity: 1, total: 0}];
     }
 
     console.log(newProducts);
@@ -65,7 +64,7 @@ export class ShoppingCartService {
     this.products.next(newProducts);
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products;
   }
 }

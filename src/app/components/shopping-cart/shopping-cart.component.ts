@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ShoppingCartProduct} from '../../interface/shopping-cart-product';
+import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  public products: ShoppingCartProduct[];
+
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
-
+    this.shoppingCartService.getProducts()
+      // .pipe(untilDestroyed(this))
+      .subscribe((products) => {
+        this.products = products;
+      });
   }
 
 }
