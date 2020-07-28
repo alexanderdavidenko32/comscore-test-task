@@ -10,7 +10,7 @@ import {ProductService} from '@app/services/product/product.service';
 })
 export class ShoppingCartService {
 
-  products: BehaviorSubject<ShoppingCartProduct[]> = new BehaviorSubject([]);
+  private products$: BehaviorSubject<ShoppingCartProduct[]> = new BehaviorSubject([]);
 
   constructor(private productService: ProductService,
               private discountService: DiscountService) { }
@@ -21,17 +21,15 @@ export class ShoppingCartService {
    *
    * @param product a product to add
    */
-  addProduct(product: Product): void {
+  addProduct(product: Product): Observable<ShoppingCartProduct[]> {
     const foundProduct = this._findProduct(product);
 
-    let products = this.products.getValue();
+    let products = this.products$.getValue();
     let newProducts: ShoppingCartProduct[];
     let productToAdd: ShoppingCartProduct;
 
     if (foundProduct) {
-      products = products.filter((item) => {
-        return item.id !== product.id;
-      }) || [];
+      products = products.filter((item) => item.id !== product.id) || [];
 
       productToAdd = {...foundProduct, quantity: foundProduct.quantity + 1};
     } else {
@@ -40,7 +38,9 @@ export class ShoppingCartService {
 
     newProducts = [...products, {...productToAdd}].sort( (a, b) => a.id - b.id);
 
-    this.products.next(newProducts);
+    this.products$.next(newProducts);
+
+    return this.products$;
   }
 
   /**
@@ -85,7 +85,7 @@ export class ShoppingCartService {
    * Returns current products list observable.
    */
   getProducts(): Observable<ShoppingCartProduct[]> {
-    return this.products;
+    return this.products$;
   }
 
   /**
@@ -96,10 +96,8 @@ export class ShoppingCartService {
    * @private
    */
   private _findProduct(product: Product): ShoppingCartProduct {
-    const products = this.products.getValue();
+    const products = this.products$.getValue();
 
-    return products.find((item) => {
-      return item.id === product.id;
-    });
+    return products.find((item) => item.id === product.id);
   }
 }

@@ -5,5 +5,5 @@ export interface Product {
   id: number;
   title: string;
   price: number;
-  discount?: Discount;
+  discount?: Discount | SimpleDiscount;
 }
