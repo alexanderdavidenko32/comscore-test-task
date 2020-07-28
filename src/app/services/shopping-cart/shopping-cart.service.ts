@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 import {Product, ShoppingCartProduct} from '@app/interface';
-import {DiscountService, ProductService} from '@app/services';
+import {DiscountService} from '@app/services/discount/discount.service';
+import {ProductService} from '@app/services/product/product.service';
 
 @Injectable({
   providedIn: 'root'
