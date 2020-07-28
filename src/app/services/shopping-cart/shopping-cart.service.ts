@@ -37,7 +37,7 @@ export class ShoppingCartService {
       productToAdd = {...product, quantity: 1};
     }
 
-    newProducts = [...products, {...productToAdd}];
+    newProducts = [...products, {...productToAdd}].sort( (a, b) => a.id - b.id);
 
     this.products.next(newProducts);
   }
