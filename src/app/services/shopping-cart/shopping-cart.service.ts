@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import {ShoppingCartProduct} from '../../interface/product/shopping-cart-product.interface';
-import {ProductService} from '../product/product.service';
-import {Product} from '../../interface/product/product.interface';
-import {DiscountService} from '../discount/discount.service';
+import {ShoppingCartProduct} from '@app/interface/product/shopping-cart-product.interface';
+import {Product} from '@app/interface/product/product.interface';
+import {ProductService} from '@app/services/product/product.service';
+import {DiscountService} from '@app/services/discount/discount.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
-import {ShoppingCartProduct} from '../../interface/product/shopping-cart-product.interface';
 import {untilDestroyed} from 'ngx-take-until-destroy';
+
+import {ShoppingCartService} from '@app/services/shopping-cart/shopping-cart.service';
+import {ShoppingCartProduct} from '@app/interface/product/shopping-cart-product.interface';
 
 @Component({
   selector: 'app-shopping-cart-link',

@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-
-import {Product} from '../../interface/product/product.interface';
-import {ProductService} from '../../services/product/product.service';
-import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
 import {untilDestroyed} from 'ngx-take-until-destroy';
+
+import {Product} from '@app/interface/product/product.interface';
+import {ProductService} from '@app/services/product/product.service';
+import {ShoppingCartService} from '@app/services/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-showcase',

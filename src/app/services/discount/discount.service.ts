@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ShoppingCartProduct} from '../../interface/product/shopping-cart-product.interface';
-import {DISCOUNTS} from '../../components/constants/discounts.constants';
+
+import {ShoppingCartProduct} from '@app/interface/product/shopping-cart-product.interface';
+import {DISCOUNTS} from '@app/constants/discounts.constants';
 
 @Injectable({
   providedIn: 'root'

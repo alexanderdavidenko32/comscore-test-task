@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 
-// TODO: use namespace @
-import {Product} from '../../interface/product/product.interface';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {DISCOUNTS} from '../../components/constants/discounts.constants';
+import {Product} from '@app/interface/product/product.interface';
+import {DISCOUNTS} from '@app/constants/discounts.constants';
 
 @Injectable({
   providedIn: 'root'

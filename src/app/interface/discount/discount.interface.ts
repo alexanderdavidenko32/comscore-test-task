@@ -1,4 +1,4 @@
-import {DISCOUNTS} from '../../components/constants/discounts.constants';
+import {DISCOUNTS} from '@app/constants/discounts.constants';
 
 export interface Discount {
   type: DISCOUNTS;
