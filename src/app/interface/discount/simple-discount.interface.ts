@@ -2,12 +2,12 @@ import {Discount} from './discount.interface';
 
 export interface SimpleDiscount extends Discount {
   /**
-   * Quantity of product items to calculate as #priceForQuantity
+   * Quantity of product items to calculate as #applyAsQuantity
    */
   quantity: number;
 
   /**
-   * Price for #quantity of products should be calculated as price for #priceForQuantity products count
+   * Price for #quantity of products should be calculated as price for #applyAsQuantity products count
    */
-  priceForQuantity: number;
+  applyAsQuantity: number;
 }

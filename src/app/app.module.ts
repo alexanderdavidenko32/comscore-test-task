@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from '@app/app.component';
 import {HeaderComponent, PageNotFoundComponent, ShoppingCartComponent, ShoppingCartLinkComponent, ShowcaseComponent, AdminComponent} from '@app/components';
 import {ProductsInterceptor} from '@app/interceptors';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ProductsInterceptor, multi: true }

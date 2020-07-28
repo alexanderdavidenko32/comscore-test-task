@@ -35,7 +35,7 @@ describe('DiscountService', () => {
       discount: {
         type: DISCOUNTS.SIMPLE_DISCOUNT,
         quantity: 5,
-        priceForQuantity: 3
+        applyAsQuantity: 3
       }
     };
     expect(service.getTotalForProduct(product)).toEqual(32);

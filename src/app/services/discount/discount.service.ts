@@ -52,7 +52,7 @@ export class DiscountService {
       const discountItems = Math.floor(product.quantity / discount.quantity);
       const restItems = product.quantity - discountItems * discount.quantity;
 
-      return discountItems * (discount.priceForQuantity * product.price ) + restItems * product.price;
+      return discountItems * (discount.applyAsQuantity * product.price ) + restItems * product.price;
     }
 
     return this._calculateNoDiscount(product);

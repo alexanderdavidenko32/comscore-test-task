@@ -22,7 +22,7 @@ export class ProductsInterceptor implements HttpInterceptor {
       discount: {
         type: DISCOUNTS.SIMPLE_DISCOUNT,
         quantity: 5,
-        priceForQuantity: 3
+        applyAsQuantity: 3
       }
     },
     {
