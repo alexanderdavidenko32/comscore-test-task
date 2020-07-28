@@ -61,6 +61,10 @@ export class ShoppingCartService {
     return null;
   }
 
+  getQuantityTotal(products: ShoppingCartProduct[]): number {
+    return products.reduce((prev: number, product: ShoppingCartProduct) => prev + product.quantity, 0);
+  }
+
   getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products;
   }

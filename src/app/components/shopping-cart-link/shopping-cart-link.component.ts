@@ -15,20 +15,13 @@ export class ShoppingCartLinkComponent implements OnInit, OnDestroy {
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.shoppingCartService.getProducts()
       .pipe(untilDestroyed(this))
       .subscribe((products: ShoppingCartProduct[]) => {
-          let total = 0;
-
-          products.forEach((product: ShoppingCartProduct) => {
-            total += product.quantity;
-          });
-
-          this.total = total;
+          this.total = this.shoppingCartService.getQuantityTotal(products);
       });
   }
 
-
-  public ngOnDestroy(): void {}
+  ngOnDestroy(): void {}
 }
