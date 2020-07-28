@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import {Product} from '@app/interface/product/product.interface';
-import {DISCOUNTS} from '@app/constants/discounts.constants';
+import {Product} from '@app/interface';
+import {DISCOUNTS} from '@app/constants';
 
 @Injectable({
   providedIn: 'root'
