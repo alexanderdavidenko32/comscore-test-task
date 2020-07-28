@@ -4,8 +4,8 @@
 </div>
 <ul>
   <li *ngFor="let product of products">
-    {{product.title}}: {{product.quantity}}. sub total: {{product.currencySign}}{{getSubtotal(product)}}
+    {{product.title}}: {{product.quantity}}. sub total: {{currencySign}}{{getSubtotal(product)}}
   </li>
 </ul>
 
-<div>total: {{total}}</div>
+<div>total: {{currencySign}}{{total}}</div>

@@ -14,6 +14,9 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Returns products from the server (stub).
+   */
   public getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.productsUrl}`);
   }

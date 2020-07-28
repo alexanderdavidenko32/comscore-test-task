@@ -2,6 +2,10 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Observable, of} from 'rxjs';
 import {DISCOUNTS, PRODUCTS_URL} from '@app/constants';
 
+/**
+ * Intercepts all the requests for products.
+ * Use it as a source of data when the server is not available.
+ */
 export class ProductsInterceptor implements HttpInterceptor {
 
   private responseBody = [

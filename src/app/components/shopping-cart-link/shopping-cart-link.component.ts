@@ -11,7 +11,10 @@ import {ShoppingCartProduct} from '@app/interface';
 })
 export class ShoppingCartLinkComponent implements OnInit, OnDestroy {
 
-  public total = 0;
+  /**
+   * Total items in shopping cart
+   */
+  total = 0;
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 

@@ -43,6 +43,11 @@ export class ShoppingCartService {
     this.products.next(newProducts);
   }
 
+  /**
+   * Returns total amount for all product items passed.
+   *
+   * @param products - target array of products
+   */
   getTotal(products: ShoppingCartProduct[]): number {
     let total = 0;
 
@@ -53,6 +58,12 @@ export class ShoppingCartService {
     return total;
   }
 
+
+  /**
+   * Returns total amount for the product passed.
+   *
+   * @param product - target product
+   */
   getSubtotal(product: ShoppingCartProduct): number {
     if (product) {
       return this.discountService.getTotalForProduct(product);
@@ -61,14 +72,29 @@ export class ShoppingCartService {
     return null;
   }
 
+  /**
+   * Returns count of products in passed shopping cart array.
+   *
+   * @param products - target products
+   */
   getQuantityTotal(products: ShoppingCartProduct[]): number {
     return products.reduce((prev: number, product: ShoppingCartProduct) => prev + product.quantity, 0);
   }
 
+  /**
+   * Returns current products list observable.
+   */
   getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products;
   }
 
+  /**
+   * Finds product in the list of current products.
+   *
+   * @param product - product to find
+   * @returns {ShoppingCartProduct}
+   * @private
+   */
   private _findProduct(product: Product): ShoppingCartProduct {
     const products = this.products.getValue();
 
