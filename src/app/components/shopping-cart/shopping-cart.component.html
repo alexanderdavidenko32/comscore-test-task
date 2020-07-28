@@ -1,11 +1,28 @@
 <h1>Shopping cart</h1>
-<div>
-  <a routerLink="/showcase">back to showcase</a>
-</div>
-<ul>
-  <li *ngFor="let product of products">
-    {{product.title}}: {{product.quantity}}. sub total: {{currencySign}}{{getSubtotal(product)}}
-  </li>
-</ul>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
+  </ol>
+</nav>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.title}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{currencySign}}{{getSubtotal(product)}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Total:</td>
+      <td>{{currencySign}}{{total}}</td>
+    </tr>
+  </tbody>
+</table>
 
-<div>total: {{currencySign}}{{total}}</div>
