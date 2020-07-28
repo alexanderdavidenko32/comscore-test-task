@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-import { ShoppingCartComponent } from './shopping-cart.component';
+import {ShoppingCartComponent} from './shopping-cart.component';
+import {ShoppingCartService} from '@app/services';
 
 describe('ShoppingCartComponent', () => {
   let component: ShoppingCartComponent;
@@ -8,7 +10,9 @@ describe('ShoppingCartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShoppingCartComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [ShoppingCartComponent],
+      providers: [ShoppingCartService]
     })
     .compileComponents();
   }));
