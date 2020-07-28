@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {ShoppingCartProduct} from '@app/interface';
 import {DISCOUNTS} from '@app/constants';
+import {SimpleDiscount} from '../../interface/discount';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +27,13 @@ export class DiscountService {
   }
 
   private _calculateSimpleDiscount(product: ShoppingCartProduct): number {
-    if (product.quantity >= product.discount.quantity) {
-      const discountItems = Math.floor(product.quantity / product.discount.quantity);
-      const restItems = product.quantity - discountItems * product.discount.quantity;
+    const discount = product.discount as SimpleDiscount;
 
-      return discountItems * (product.discount.priceForQuantity * product.price ) + restItems * product.price;
+    if (product.quantity >= discount.quantity) {
+      const discountItems = Math.floor(product.quantity / discount.quantity);
+      const restItems = product.quantity - discountItems * discount.quantity;
+
+      return discountItems * (discount.priceForQuantity * product.price ) + restItems * product.price;
     }
 
     return this._calculateNoDiscount(product);

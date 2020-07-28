@@ -7,6 +7,5 @@ export interface Product {
   price: number;
   currency: string;
   currencySign: string;
-  // TODO: add basic Discount interface with type property
-  discount?: SimpleDiscount;
+  discount?: Discount;
 }
