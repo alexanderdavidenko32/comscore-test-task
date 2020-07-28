@@ -17,7 +17,12 @@ export class ProductService {
   /**
    * Returns products from the server (stub).
    */
-  public getProducts(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.productsUrl}`);
+  }
+
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.productsUrl}`, product);
   }
 }

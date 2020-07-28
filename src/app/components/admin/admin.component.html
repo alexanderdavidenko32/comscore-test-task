@@ -1,0 +1,12 @@
+<p>admin works!</p>
+<input type="text" placeholder="Title" [(ngModel)]="product.title"/>
+<input type="number" placeholder="Price" [(ngModel)]="product.price"/>
+<select name="discount" [(ngModel)]="product.discount.type">
+  <option value="{{discounts.NO_DISCOUNT}}">no discount</option>
+  <option value="{{discounts.SIMPLE_DISCOUNT}}">Simple discount</option>
+</select>
+<ng-template *ngIf="product.discount?.type === discounts.SIMPLE_DISCOUNT">
+  <input type="text" placeholder="Quantity" [(ngModel)]="product.discount.quantity">
+  <input type="text" placeholder="As for Quantity" [(ngModel)]="product.discount.priceForQuantity">
+</ng-template>
+<button type="button" class="btn btn-primary" (click)="onAddProductClick($event)">add product</button>

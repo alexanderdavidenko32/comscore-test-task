@@ -1,5 +1,6 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
+
 import {DISCOUNTS, PRODUCTS_URL} from '@app/constants';
 
 /**
@@ -32,10 +33,18 @@ export class ProductsInterceptor implements HttpInterceptor {
   ];
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url === PRODUCTS_URL) {
+    if (req.url !== PRODUCTS_URL) {
+      return next.handle(req);
+    }
+
+    if (req.method === 'GET') {
       return of(new HttpResponse({ status: 200, body: this.responseBody }));
     }
 
-    return next.handle(req);
+    if (req.method === 'POST') {
+      this.responseBody.push(req.body);
+      return of(new HttpResponse({ status: 200, body: req.body }));
+    }
+
   }
 }

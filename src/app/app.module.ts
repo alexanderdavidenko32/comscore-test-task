@@ -5,8 +5,9 @@ import {AppRoutingModule} from '@app/routing/app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from '@app/app.component';
-import {HeaderComponent, PageNotFoundComponent, ShoppingCartComponent, ShoppingCartLinkComponent, ShowcaseComponent} from '@app/components';
+import {HeaderComponent, PageNotFoundComponent, ShoppingCartComponent, ShoppingCartLinkComponent, ShowcaseComponent, AdminComponent} from '@app/components';
 import {ProductsInterceptor} from '@app/interceptors';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,14 @@ import {ProductsInterceptor} from '@app/interceptors';
     HeaderComponent,
     ShoppingCartComponent,
     ShoppingCartLinkComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ProductsInterceptor, multi: true }

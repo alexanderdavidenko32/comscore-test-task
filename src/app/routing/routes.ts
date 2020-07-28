@@ -3,6 +3,7 @@ import {Routes} from '@angular/router';
 import {ShowcaseComponent} from '@app/components/showcase/showcase.component';
 import {PageNotFoundComponent} from '@app/components/page-not-found/page-not-found.component';
 import {ShoppingCartComponent} from '@app/components/shopping-cart/shopping-cart.component';
+import {AdminComponent} from '@app/components/admin/admin.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,11 @@ export const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
     pathMatch: 'full'
   },
   {
