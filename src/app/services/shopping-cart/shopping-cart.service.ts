@@ -16,31 +16,31 @@ export class ShoppingCartService {
   constructor(private productService: ProductService,
               private discountService: DiscountService) { }
 
-  // TODO: refactor
+
+  /**
+   * Adds a product to the shopping cart.
+   *
+   * @param product a product to add
+   */
   addProduct(product: Product): void {
-    const products = this.products.getValue();
-    let newProducts: ShoppingCartProduct[] = [];
+    const foundProduct = this._findProduct(product);
 
-    const foundProduct = products.find((item) => {
-      return item.id === product.id;
-    });
-
+    let products = this.products.getValue();
+    let newProducts: ShoppingCartProduct[];
+    let productToAdd: ShoppingCartProduct;
 
     if (foundProduct) {
-      const theRestProducts = products.filter((item) => {
+      products = products.filter((item) => {
         return item.id !== product.id;
       }) || [];
 
-      const tempProduct = {...foundProduct, total: 0, quantity: foundProduct.quantity + 1};
-
-      newProducts = [...theRestProducts, {...tempProduct}];
+      productToAdd = {...foundProduct, quantity: foundProduct.quantity + 1};
     } else {
-      const tempProduct = {...product, total: 0, quantity: 1};
-
-      newProducts = [...products, {...tempProduct }];
+      productToAdd = {...product, quantity: 1};
     }
 
-    console.log(newProducts);
+    newProducts = [...products, {...productToAdd}];
+
     this.products.next(newProducts);
   }
 
@@ -64,5 +64,13 @@ export class ShoppingCartService {
 
   getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products;
+  }
+
+  private _findProduct(product: Product): ShoppingCartProduct {
+    const products = this.products.getValue();
+
+    return products.find((item) => {
+      return item.id === product.id;
+    });
   }
 }
