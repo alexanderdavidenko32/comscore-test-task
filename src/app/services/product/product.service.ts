@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
 // TODO: use namespace @
-import {Product} from '../../interface/product.interface';
+import {Product} from '../../interface/product/product.interface';
 import {BehaviorSubject, Observable, of} from 'rxjs';
+import {DISCOUNTS} from '../../components/constants/discounts.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,12 @@ export class ProductService {
       title: 'Snickers',
       price: 4,
       currency: 'usd',
-      currencySign: '$'
+      currencySign: '$',
+      discount: {
+        type: DISCOUNTS.SIMPLE_DISCOUNT,
+        quantity: 5,
+        priceForQuantity: 3
+      }
     },
     {
       id: 3,

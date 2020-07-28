@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {untilDestroyed} from 'ngx-take-until-destroy';
-import {ShoppingCartProduct} from '../../interface/shopping-cart-product';
+import {ShoppingCartProduct} from '../../interface/product/shopping-cart-product.interface';
 import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
 
 @Component({
@@ -21,8 +21,12 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       .subscribe((products) => {
         this.products = products;
 
-        this.total = this.shoppingCartService.getTotal();
+        this.total = this.shoppingCartService.getTotal(this.products);
       });
+  }
+
+  public getSubtotal(product: ShoppingCartProduct): number {
+    return this.shoppingCartService.getSubtotal(product);
   }
 
   public ngOnDestroy(): void {}

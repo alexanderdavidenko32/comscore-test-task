@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
-import {ShoppingCartProduct} from '../../interface/shopping-cart-product';
+import {ShoppingCartProduct} from '../../interface/product/shopping-cart-product.interface';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 
 @Component({

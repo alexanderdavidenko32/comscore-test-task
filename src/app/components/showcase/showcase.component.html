@@ -1,4 +1,4 @@
 <h1>Showcase</h1>
 <ul>
-  <li *ngFor="let product of products">{{ product.title }}: {{product.currencySign}}{{product.price}} <a href="#" (click)="onAddProductClick($event, product.id)">add</a></li>
+  <li *ngFor="let product of products">{{ product.title }}: {{product.currencySign}}{{product.price}} <a href="#" (click)="onAddProductClick($event, product)">add</a></li>
 </ul>

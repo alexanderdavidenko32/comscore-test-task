@@ -1,0 +1,4 @@
+export enum DISCOUNTS {
+  NO_DISCOUNT,
+  SIMPLE_DISCOUNT
+}

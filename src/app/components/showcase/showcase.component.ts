@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
-import {Product} from '../../interface/product.interface';
+import {Product} from '../../interface/product/product.interface';
 import {ProductService} from '../../services/product/product.service';
 import {ShoppingCartService} from '../../services/shopping-cart/shopping-cart.service';
 import {untilDestroyed} from 'ngx-take-until-destroy';
@@ -27,10 +27,10 @@ export class ShowcaseComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {}
 
-  public onAddProductClick(event: Event, id: number): void {
+  public onAddProductClick(event: Event, product: Product): void {
     event.preventDefault();
 
-    this.shoppingCartService.addProduct(id);
+    this.shoppingCartService.addProduct(product);
   }
 
 }
