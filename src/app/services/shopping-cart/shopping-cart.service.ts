@@ -12,6 +12,10 @@ import {ProductService} from '@app/services/product/product.service';
 export class ShoppingCartService {
 
   private products$: BehaviorSubject<ShoppingCartProduct[]> = new BehaviorSubject([]);
+
+  /**
+   * Key for the product list on the session storage.
+   */
   private productsKey = 'shopping-cart-products';
 
   constructor(private productService: ProductService,
