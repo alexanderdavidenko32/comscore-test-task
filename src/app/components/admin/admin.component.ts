@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {untilDestroyed} from 'ngx-take-until-destroy';
 
 import {Product} from '@app/interface/product';
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit, OnDestroy {
+export class AdminComponent implements OnDestroy {
 
   discounts = DISCOUNTS;
   productForm = new FormGroup({});
@@ -24,8 +24,6 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService,
               private router: Router) { }
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {}
 
