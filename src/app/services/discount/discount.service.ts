@@ -48,11 +48,11 @@ export class DiscountService {
   private _calculateSimpleDiscount(product: ShoppingCartProduct): number {
     const discount = product.discount as SimpleDiscount;
 
-    if (product.quantity >= discount.quantity) {
-      const discountItems = Math.floor(product.quantity / discount.quantity);
-      const restItems = product.quantity - discountItems * discount.quantity;
+    if (product.quantity >= discount.eachItem) {
+      const discountItems = Math.floor(product.quantity / discount.eachItem);
+      const totalItems = product.quantity - discountItems * discount.hasFreeItems;
 
-      return discountItems * (discount.applyAsQuantity * product.price ) + restItems * product.price;
+      return totalItems * product.price;
     }
 
     return this._calculateNoDiscount(product);

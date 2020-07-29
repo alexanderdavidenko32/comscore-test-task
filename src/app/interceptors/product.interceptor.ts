@@ -21,8 +21,8 @@ export class ProductsInterceptor implements HttpInterceptor {
       price: 4,
       discount: {
         type: DISCOUNTS.SIMPLE_DISCOUNT,
-        quantity: 5,
-        applyAsQuantity: 3
+        eachItem: 5,
+        hasFreeItems: 2
       }
     },
     {

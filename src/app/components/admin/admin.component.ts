@@ -88,8 +88,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     if (this.isDiscountType(DISCOUNTS.SIMPLE_DISCOUNT)) {
       product.discount = {
         type: DISCOUNTS.SIMPLE_DISCOUNT,
-        quantity: +this._getFormControlValue('quantity'),
-        applyAsQuantity: +this._getFormControlValue('applyAsQuantity')
+        eachItem: +this._getFormControlValue('eachItem'),
+        hasFreeItems: +this._getFormControlValue('hasFreeItems')
       };
     }
 

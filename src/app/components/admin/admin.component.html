@@ -21,13 +21,13 @@
   </div>
   <ng-container *ngIf="isDiscountType(discounts.SIMPLE_DISCOUNT)">
     <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input id="quantity" type="text" class="form-control" [ngClass]="{'is-invalid' : formErrors && formErrors.quantity}" placeholder="Quantity" [formControl]="getFormControl('quantity')">
+      <label for="eachItem">Each item</label>
+      <input id="eachItem" type="text" class="form-control" [ngClass]="{'is-invalid' : formErrors && formErrors.eachItem}" placeholder="Each item" [formControl]="getFormControl('eachItem')">
       <div class="invalid-feedback">The field is required</div>
     </div>
     <div class="form-group">
-      <label for="applyAsQuantity">Apply as quantity</label>
-      <input id="applyAsQuantity" type="text" class="form-control" [ngClass]="{'is-invalid' : formErrors && formErrors.applyAsQuantity}" placeholder="Apply as quantity" [formControl]="getFormControl('applyAsQuantity')">
+      <label for="hasFreeItems">Has free items</label>
+      <input id="hasFreeItems" type="text" class="form-control" [ngClass]="{'is-invalid' : formErrors && formErrors.hasFreeItems}" placeholder="Has free items" [formControl]="getFormControl('hasFreeItems')">
       <div class="invalid-feedback">The field is required</div>
     </div>
   </ng-container>
