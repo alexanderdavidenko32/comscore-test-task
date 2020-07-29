@@ -59,6 +59,19 @@ describe('ShoppingCartService', () => {
     });
   });
 
+  it ('should remove item to cart', () => {
+    const product: ShoppingCartProduct = {
+      id: 1,
+      title: 'Popcorn',
+      price: 3,
+      quantity: 2
+    };
+
+    service.removeProduct(product).subscribe((products) => {
+      expect(products.length).toEqual(0);
+    });
+  });
+
   it ('should return products', () => {
     const product: Product = {
       id: 1,

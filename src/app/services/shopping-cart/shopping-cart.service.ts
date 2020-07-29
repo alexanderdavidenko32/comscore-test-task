@@ -45,6 +45,21 @@ export class ShoppingCartService {
   }
 
   /**
+   * Removes product from the shopping cart.
+   *
+   * @param {ShoppingCartProduct} product
+   * @returns {Observable<ShoppingCartProduct[]>}
+   */
+  removeProduct(product: ShoppingCartProduct): Observable<ShoppingCartProduct[]> {
+    const products = this.products$.getValue();
+    const newProducts = products.filter((item: ShoppingCartProduct) => item.id !== product.id);
+
+    this.products$.next(newProducts);
+
+    return this.products$;
+  }
+
+  /**
    * Returns total amount for all product items passed.
    *
    * @param products - target array of products

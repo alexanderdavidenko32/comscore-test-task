@@ -12,6 +12,7 @@
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Subtotal</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,10 +21,13 @@
       <td>{{currencySign}}{{product.price}}</td>
       <td>{{product.quantity}}</td>
       <td>{{currencySign}}{{getSubtotal(product)}}</td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="onRemoveProduct(product)">remove</button>
+      </td>
     </tr>
     <tr>
       <td colspan="3">Total:</td>
-      <td>{{currencySign}}{{total}}</td>
+      <td colspan="2">{{currencySign}}{{total}}</td>
     </tr>
   </tbody>
 </table>

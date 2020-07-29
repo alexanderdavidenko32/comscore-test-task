@@ -39,13 +39,22 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   /**
-   * Returns total for the product passed
+   * Returns total for the product passed.
    *
    * @param {ShoppingCartProduct} product - product to get total
    * @returns {number}
    */
   getSubtotal(product: ShoppingCartProduct): number {
     return this.shoppingCartService.getSubtotal(product);
+  }
+
+  /**
+   * Removes product from the shopping cart.
+   *
+   * @param {ShoppingCartProduct} product
+   */
+  onRemoveProduct(product: ShoppingCartProduct): void {
+    this.shoppingCartService.removeProduct(product);
   }
 
 }
