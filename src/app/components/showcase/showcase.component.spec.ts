@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import {ShowcaseComponent} from './showcase.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -10,7 +11,7 @@ describe('ShowcaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot()],
       declarations: [ShowcaseComponent],
       providers: [ProductService, ShoppingCartService]
     })

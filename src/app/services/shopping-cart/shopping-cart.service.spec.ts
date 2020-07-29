@@ -1,5 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import {ShoppingCartService} from './shopping-cart.service';
 import {DiscountService, ProductService} from '@app/services';
@@ -36,7 +37,7 @@ describe('ShoppingCartService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot()],
       providers: [ProductService, DiscountService],
     });
     service = TestBed.inject(ShoppingCartService);
@@ -90,13 +91,13 @@ describe('ShoppingCartService', () => {
     expect(service.getTotal(shoppingCartProducts)).toEqual(13);
   });
 
-  it ('should return total amount', () => {
+  it ('should return subtotal', () => {
     const product = shoppingCartProducts[0];
 
     expect(service.getSubtotal(product)).toEqual(3);
   });
 
-  it ('should return total amount', () => {
+  it ('should return quantity for products', () => {
     expect(service.getQuantityTotal(shoppingCartProducts)).toEqual(4);
   });
 });

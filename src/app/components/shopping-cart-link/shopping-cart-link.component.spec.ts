@@ -1,7 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 import {ShoppingCartLinkComponent} from './shopping-cart-link.component';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ShoppingCartLinkComponent', () => {
   let component: ShoppingCartLinkComponent;
@@ -9,7 +10,7 @@ describe('ShoppingCartLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot()],
       declarations: [ ShoppingCartLinkComponent ]
     })
     .compileComponents();
