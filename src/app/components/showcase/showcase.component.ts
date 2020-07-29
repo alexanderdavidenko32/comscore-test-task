@@ -35,8 +35,8 @@ export class ShowcaseComponent implements OnInit, OnDestroy {
   /**
    * Add product click handler.
    *
-   * @param event - mouse click/tap event
-   * @param product - product to add to the shopping cart
+   * @param {Event} event - mouse click/tap event
+   * @param {Product} product - product to add to the shopping cart
    */
   onAddProductClick(event: Event, product: Product): void {
     event.preventDefault();

@@ -40,7 +40,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   /**
    * Returns total for the product passed
-   * @param product - product to get total
+   *
+   * @param {ShoppingCartProduct} product - product to get total
+   * @returns {number}
    */
   getSubtotal(product: ShoppingCartProduct): number {
     return this.shoppingCartService.getSubtotal(product);

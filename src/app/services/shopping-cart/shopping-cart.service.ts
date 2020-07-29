@@ -20,6 +20,7 @@ export class ShoppingCartService {
    * Adds a product to the shopping cart.
    *
    * @param product a product to add
+   * @returns {Observable<ShoppingCartProduct[]>}
    */
   addProduct(product: Product): Observable<ShoppingCartProduct[]> {
     const foundProduct = this._findProduct(product);
@@ -47,6 +48,7 @@ export class ShoppingCartService {
    * Returns total amount for all product items passed.
    *
    * @param products - target array of products
+   * @returns {number}
    */
   getTotal(products: ShoppingCartProduct[]): number {
     let total = 0;
@@ -63,6 +65,7 @@ export class ShoppingCartService {
    * Returns total amount for the product passed.
    *
    * @param product - target product
+   * @returns {number}
    */
   getSubtotal(product: ShoppingCartProduct): number {
     if (product) {
@@ -76,6 +79,7 @@ export class ShoppingCartService {
    * Returns count of products in passed shopping cart array.
    *
    * @param products - target products
+   * @returns {number}
    */
   getQuantityTotal(products: ShoppingCartProduct[]): number {
     return products.reduce((prev: number, product: ShoppingCartProduct) => prev + product.quantity, 0);
@@ -83,6 +87,8 @@ export class ShoppingCartService {
 
   /**
    * Returns current products list observable.
+   *
+   * @returns {Observable<ShoppingCartProduct[]>}
    */
   getProducts(): Observable<ShoppingCartProduct[]> {
     return this.products$;

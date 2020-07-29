@@ -14,7 +14,8 @@ export class DiscountService {
   /**
    * Returns total price for the product in shopping cart.
    *
-   * @param product - target product
+   * @param {ShoppingCartProduct} product - target product
+   * @returns {number}
    */
   getTotalForProduct(product: ShoppingCartProduct): number {
     const discountType = product.discount ? product.discount.type : DISCOUNTS.NO_DISCOUNT;
@@ -30,7 +31,7 @@ export class DiscountService {
   /**
    * Calculates {DISCOUNTS.NO_DISCOUNT} discount for product in shopping cart.
    *
-   * @param product - target product
+   * @param {ShoppingCartProduct} product - target product
    * @returns {number}
    * @private
    */
@@ -41,7 +42,7 @@ export class DiscountService {
   /**
    * Calculates {DISCOUNTS.SIMPLE_DISCOUNT} discount for product in shopping cart
    *
-   * @param product - target product
+   * @param {ShoppingCartProduct} product - target product
    * @returns {number}
    * @private
    */

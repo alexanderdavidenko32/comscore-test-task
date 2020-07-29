@@ -16,6 +16,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   discounts = DISCOUNTS;
   productForm = new FormGroup({});
+
+  /**
+   * Errors of the form to show validation.
+   */
   formErrors;
 
   constructor(private productService: ProductService,
@@ -25,6 +29,9 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
+  /**
+   * Add product button handler
+   */
   onAddProductClick(): void {
     this.formErrors = this._getFormValidationErrors(this.productForm);
 
@@ -42,6 +49,12 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
 
+  /**
+   * Finds in existing #productForm or adds to it a form control by the name passed.
+   *
+   * @param {string} name - name of the form control
+   * @returns {FormControl}
+   */
   getFormControl(name: string): FormControl {
     let formControl = this.productForm.get(name) as FormControl;
 
@@ -56,10 +69,24 @@ export class AdminComponent implements OnInit, OnDestroy {
     return formControl;
   }
 
+  /**
+   * Checks whether passed discount type is the same as selected on the form
+   *
+   * @param {DISCOUNTS} type - target type
+   * @returns {boolean}
+   */
   isDiscountType(type: DISCOUNTS): boolean {
     return this._getDiscountType() === type;
   }
 
+  /**
+   * Returns form errors.
+   * Could be moved to utils.
+   *
+   * @param {FormGroup} form - target form
+   * @returns {ValidationErrors}
+   * @private
+   */
   private _getFormValidationErrors(form: FormGroup): ValidationErrors {
     const errors = {};
 
@@ -74,14 +101,33 @@ export class AdminComponent implements OnInit, OnDestroy {
     return errors;
   }
 
+  /**
+   * Returns value of the form control by name.
+   *
+   * @param {string} name - name of the form control
+   * @returns {any}
+   * @private
+   */
   private _getFormControlValue(name: string): any {
     return this.getFormControl(name) && this.getFormControl(name).value;
   }
 
+  /**
+   * Returns currently selected discount type..
+   *
+   * @returns {DISCOUNTS}
+   * @private
+   */
   private _getDiscountType(): DISCOUNTS {
     return +this._getFormControlValue('discountType');
   }
 
+  /**
+   * Creates a separate object from the form controls to save to the server.
+   *
+   * @returns {Product}
+   * @private
+   */
   private _populateProduct(): Product {
     const product: Product = {
       id: new Date().getTime(),
