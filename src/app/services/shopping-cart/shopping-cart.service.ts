@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {SessionStorageService} from 'ngx-webstorage';
+import {LocalStorageService} from 'ngx-webstorage';
 
 import {Product, ShoppingCartProduct} from '@app/interface';
 import {DiscountService} from '@app/services/discount/discount.service';
@@ -20,13 +20,13 @@ export class ShoppingCartService {
 
   constructor(private productService: ProductService,
               private discountService: DiscountService,
-              private sessionStorageService: SessionStorageService) {
+              private localStorageService: LocalStorageService) {
 
-    const products = this.sessionStorageService.retrieve(this.productsKey);
+    const products = this.localStorageService.retrieve(this.productsKey);
 
     this.products$.next(products || []);
     this.products$.subscribe((newProducts) => {
-      this.sessionStorageService.store(this.productsKey, newProducts);
+      this.localStorageService.store(this.productsKey, newProducts);
     });
   }
 

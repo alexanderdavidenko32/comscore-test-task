@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import {SessionStorageService} from 'ngx-webstorage';
+import {Injectable} from '@angular/core';
+import {LocalStorageService} from 'ngx-webstorage';
 
 import {Product} from '@app/interface/product';
 import {DISCOUNTS} from '@app/constants';
 
 /**
- * Stores the list of the products for the showcase to the session storage.
+ * Stores the list of the products for the showcase to the local storage.
  */
 @Injectable({
   providedIn: 'root'
@@ -39,23 +39,23 @@ export class FakeProductStoreService {
     }
   ];
 
-  constructor(private sessionStorageService: SessionStorageService) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   /**
-   * Returns products from the session storage.
+   * Returns products from the local storage.
    *
    * @returns {Product[]}
    */
   get products(): Product[] {
-    return this.sessionStorageService.retrieve(this.productsKey) || this.initialProducts;
+    return this.localStorageService.retrieve(this.productsKey) || this.initialProducts;
   }
 
   /**
-   * Sets products to session storage
+   * Sets products to local storage
    *
    * @param {Product[]} products
    */
   set products(products: Product[]) {
-    this.sessionStorageService.store(this.productsKey, products);
+    this.localStorageService.store(this.productsKey, products);
   }
 }
