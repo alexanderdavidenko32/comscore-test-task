@@ -2,35 +2,16 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from
 import {Observable, of} from 'rxjs';
 
 import {DISCOUNTS, PRODUCTS_URL} from '@app/constants';
+import {Injectable} from '@angular/core';
+import {FakeProductStoreService} from '@app/services/fake/fake-product-store.service';
 
 /**
  * Intercepts all the requests for products.
  * Use it as a source of data when the server is not available.
  */
+@Injectable()
 export class ProductsInterceptor implements HttpInterceptor {
-
-  private responseBody = [
-    {
-      id: 1,
-      title: 'Popcorn',
-      price: 3
-    },
-    {
-      id: 2,
-      title: 'Snickers',
-      price: 4,
-      discount: {
-        type: DISCOUNTS.SIMPLE_DISCOUNT,
-        eachItem: 5,
-        hasFreeItems: 2
-      }
-    },
-    {
-      id: 3,
-      title: 'Soda',
-      price: 2
-    }
-  ];
+  constructor(private fakeProductStoreService: FakeProductStoreService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (req.url !== PRODUCTS_URL) {
@@ -38,13 +19,14 @@ export class ProductsInterceptor implements HttpInterceptor {
     }
 
     if (req.method === 'GET') {
-      return of(new HttpResponse({ status: 200, body: this.responseBody }));
+      return of(new HttpResponse({ status: 200, body: this.fakeProductStoreService.products }));
     }
 
     if (req.method === 'POST') {
-      this.responseBody.push(req.body);
+      const newProducts = [...this.fakeProductStoreService.products, req.body];
+      this.fakeProductStoreService.products = newProducts;
+
       return of(new HttpResponse({ status: 200, body: req.body }));
     }
-
   }
 }
