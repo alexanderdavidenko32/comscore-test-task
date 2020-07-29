@@ -5,6 +5,7 @@ import {Product} from '@app/interface/product';
 import {DISCOUNTS} from '@app/constants';
 import {ProductService} from '@app/services';
 import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -17,7 +18,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   productForm = new FormGroup({});
   formErrors;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -34,7 +36,9 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     this.productService.addProduct(product)
       .pipe(untilDestroyed(this))
-      .subscribe(() => {});
+      .subscribe(() => {
+        this.router.navigate(['']);
+      });
   }
 
 

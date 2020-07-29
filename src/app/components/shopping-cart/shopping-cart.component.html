@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th scope="col">Title</th>
+      <th scope="col">Price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Subtotal</th>
     </tr>
@@ -16,11 +17,12 @@
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.title}}</td>
+      <td>{{currencySign}}{{product.price}}</td>
       <td>{{product.quantity}}</td>
       <td>{{currencySign}}{{getSubtotal(product)}}</td>
     </tr>
     <tr>
-      <td colspan="2">Total:</td>
+      <td colspan="3">Total:</td>
       <td>{{currencySign}}{{total}}</td>
     </tr>
   </tbody>
