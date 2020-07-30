@@ -4,3 +4,4 @@ export * from './shopping-cart/shopping-cart.component';
 export * from './shopping-cart-link/shopping-cart-link.component';
 export * from './showcase/showcase.component';
 export * from './admin/admin.component';
+export * from './base-form/base-form.component';

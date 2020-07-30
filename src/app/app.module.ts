@@ -11,6 +11,7 @@ import {
   ShowcaseComponent
 } from '@app/components';
 import {ProductsInterceptor} from '@app/interceptors';
+import {BaseFormComponent} from './components/base-form/base-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ProductsInterceptor} from '@app/interceptors';
     ShoppingCartComponent,
     ShoppingCartLinkComponent,
     PageNotFoundComponent,
-    AdminComponent
+    AdminComponent,
+    BaseFormComponent
   ],
   imports: [
     BrowserModule,

@@ -19,9 +19,19 @@
     <tr *ngFor="let product of products">
       <td>{{product.title}}</td>
       <td>{{currencySign}}{{product.price}}</td>
-      <td>{{product.quantity}}</td>
+      <td>
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 [ngClass]="{'is-invalid' : formErrors && formErrors[generateQuantityFieldName(product)]?.required}"
+                 [formControl]="getFormControl(generateQuantityFieldName(product), product.quantity)"
+          />
+          <div class="invalid-feedback">The field is required</div>
+        </div>
+      </td>
       <td>{{currencySign}}{{getSubtotal(product)}}</td>
       <td>
+        <button type="button" class="btn btn-primary" (click)="onUpdateProduct(product)">update</button>
         <button type="button" class="btn btn-primary" (click)="onRemoveProduct(product)">remove</button>
       </td>
     </tr>

@@ -1,6 +1,6 @@
 <h1>Add product</h1>
 
-<form [formGroup]="productForm">
+<form [formGroup]="formGroup">
   <div class="form-group">
     <label for="title">Title</label>
     <input id="title" type="text" class="form-control" [ngClass]="{'is-invalid' : formErrors && formErrors.title}" placeholder="Title" [formControl]="getFormControl('title')"/>

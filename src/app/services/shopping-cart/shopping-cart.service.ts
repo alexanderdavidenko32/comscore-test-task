@@ -75,6 +75,24 @@ export class ShoppingCartService {
   }
 
   /**
+   * Updates product in the shopping cart.
+   *
+   * @param {ShoppingCartProduct} product
+   * @returns {Observable<ShoppingCartProduct[]>}
+   */
+  updateProduct(product: ShoppingCartProduct): Observable<ShoppingCartProduct[]> {
+    const products = this.products$.getValue();
+    const newProducts = [
+        ...products.filter((item: ShoppingCartProduct) => item.id !== product.id), product
+      ]
+      .sort( (a, b) => a.id - b.id);
+
+    this.products$.next(newProducts);
+
+    return this.products$;
+  }
+
+  /**
    * Returns total amount for all product items passed.
    *
    * @param products - target array of products

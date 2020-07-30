@@ -4,13 +4,14 @@ import {untilDestroyed} from 'ngx-take-until-destroy';
 import {ShoppingCartProduct} from '@app/interface';
 import {ShoppingCartService} from '@app/services';
 import {CURRENCY_SIGN} from '@app/constants';
+import {BaseFormComponent} from '@app/components/base-form/base-form.component';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy {
+export class ShoppingCartComponent extends BaseFormComponent implements OnInit, OnDestroy {
 
   /**
    * List of products in shopping cart.
@@ -24,7 +25,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   currencySign = CURRENCY_SIGN;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.shoppingCartService.getProducts()
@@ -55,6 +58,28 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
    */
   onRemoveProduct(product: ShoppingCartProduct): void {
     this.shoppingCartService.removeProduct(product);
+  }
+
+  onUpdateProduct(product: ShoppingCartProduct): void {
+    this.formErrors = this.getFormValidationErrors(this.formGroup);
+
+    if (!this.formGroup.valid) {
+      return;
+    }
+
+    const updatedProduct = {...product, quantity: +this.getFormControlValue(this.generateQuantityFieldName(product))};
+
+    this.shoppingCartService.updateProduct(updatedProduct);
+  }
+
+  /**
+   * Returns quantity field name for the form control.
+   *
+   * @param ShoppingCartProduct product - target product
+   * @returns {string}
+   */
+  generateQuantityFieldName(product: ShoppingCartProduct): string {
+    return 'quantity-' + product.id;
   }
 
 }
