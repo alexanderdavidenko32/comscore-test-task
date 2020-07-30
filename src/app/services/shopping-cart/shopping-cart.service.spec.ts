@@ -87,6 +87,21 @@ describe('ShoppingCartService', () => {
     });
   });
 
+  it ('should update product', () => {
+    const product: ShoppingCartProduct = {
+      id: 1,
+      title: 'Popcorn',
+      price: 3,
+      quantity: 10
+    };
+
+    service.updateProduct(product).subscribe((products) => {
+      const targetProduct = products.find(item => item.id === product.id);
+
+      expect(targetProduct.quantity).toEqual(10);
+    });
+  });
+
   it ('should return total amount', () => {
     expect(service.getTotal(shoppingCartProducts)).toEqual(13);
   });
