@@ -60,6 +60,11 @@ export class ShoppingCartComponent extends BaseFormComponent implements OnInit, 
     this.shoppingCartService.removeProduct(product);
   }
 
+  /**
+   * Updates product quantity in the shopping cart.
+   *
+   * @param {ShoppingCartProduct} product - target product
+   */
   onUpdateProduct(product: ShoppingCartProduct): void {
     this.formErrors = this.getFormValidationErrors(this.formGroup);
 
